@@ -34,4 +34,4 @@ def days_in_month(year, month):
     print("Number of days is: " + str(difference.days))
 
 
-days_in_month(2017,12)
+days_in_month(2017, 12)
