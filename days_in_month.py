@@ -22,16 +22,39 @@ def days_in_month(year, month):
     #     print("The year: " + str(year) + " is not between the valid MIN and MAX year.")
 
     next_month = month + 1
+
     if next_month == 13:
         next_month = 1
-        next_year = year + 1
+        year = year + 1
 
     date1 = datetime.date(year, month, 1)
-    date2 = datetime.date(next_year, next_month, 1)
+    print("NExt month = " + str(next_month))
+    print("Date 1 = " + str(date1))
+
+    if next_month == 1:
+        year = year + 1
+    date2 = datetime.date(year, next_month, 1)
+    print("Date 2 = " + str(date2))
 
     difference = date2 - date1
 
     print("Number of days is: " + str(difference.days))
 
+days_in_month(2017, 2)
 
-days_in_month(2017, 12)
+def is_valid_date(year,month,day):
+    """
+    Inputs:
+      year  - an integer repersenting the year
+      month - an integer representing the month
+      day   - an integer representing the day
+
+    Returns:
+      True if year-month-day is a valid date
+      False otherwise
+
+    :param year:
+    :param month:
+    :param day:
+    :return:
+    """
