@@ -21,23 +21,26 @@ def days_in_month(year, month):
     # else:
     #     print("The year: " + str(year) + " is not between the valid MIN and MAX year.")
 
+
     next_month = month + 1
 
     if next_month == 13:
         next_month = 1
-        year = year + 1
 
-    date1 = datetime.date(year, month, 1)
-    #print("Next month = " + str(next_month))
-    #print("Date 1 = " + str(date1))
+    if (datetime.MINYEAR <= year <= datetime.MAXYEAR and 1 <= month <= 12):
+        date1 = datetime.date(year, month, 1)
+    else:
+        return False
+    # print("Next month = " + str(next_month))
+    # print("Date 1 = " + str(date1))
 
     if next_month == 1:
         year = year + 1
     date2 = datetime.date(year, next_month, 1)
-    #print("Date 2 = " + str(date2))
+    # print("Date 2 = " + str(date2))
 
     difference = date2 - date1
-    #print("Value of 'difference' variable is: " + str(difference))
+    # print("Value of 'difference' variable is: " + str(difference))
     rt_diff = difference.days
     print("Number of days in the input month is: " + str(rt_diff))
     return rt_diff
@@ -56,17 +59,21 @@ def is_valid_date(year, month, day):
       False otherwise
     """
     max_days = days_in_month(year, month)
-    #print("Max_Days = " + str(max_days))
-    #date = datetime.date(year, month, day)
+    # print("Max_Days = " + str(max_days))
+    # if (datetime.MINYEAR <= year <= datetime.MAXYEAR and 1 <= month <= 12):
+    #     date = datetime.date(year, month, day)
+    # else:
+    #     return False
 
     if ((datetime.MINYEAR <= year <= datetime.MAXYEAR) and (1 <= month <= 12) and
         (1 <= day <= max_days)):
-        #print("The date: " + str(date) + " is valid.")
+        date = datetime.date(year, month, day)
+        print("The date: " + str(date) + " is valid.")
         date_valid = True
         print(date_valid)
         return date_valid
     else:
-        #print("The year: " + str(date) + " is not valid.")
+        # print("The year: " + str(date) + " is not valid.")
         date_valid = False
         print(date_valid)
         return date_valid
@@ -96,7 +103,7 @@ def days_between(year1, month1, day1, year2, month2, day2):
         print("Days between the first and second dates = " + str(rt_diff))
         return rt_diff
     else:
-        #print("First condition failed! Returning 0.")
+        # print("First condition failed! Returning 0.")
         return 0
 
 
@@ -122,11 +129,11 @@ def age_in_days(year, month, day):
         return rt_diff
 
     else:
-        #print("Return 0 because my input date is invalid or the input date is in the future!")
+        # print("Return 0 because my input date is invalid or the input date is in the future!")
         return 0
 
-
-age_in_days(1977, 12, 28)
+is_valid_date(0, 12, 31)
+# age_in_days(1977, 12, 28)
 days_between(2017, 12, 31, 2018, 1, 2)
-is_valid_date(2017, 12, 31)
-days_in_month(2017, 2)
+# is_valid_date(2017, 12, 31)
+# days_in_month(2017, 2)
