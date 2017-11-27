@@ -28,7 +28,7 @@ def days_in_month(year, month):
         year = year + 1
 
     date1 = datetime.date(year, month, 1)
-    print("NExt month = " + str(next_month))
+    print("Next month = " + str(next_month))
     print("Date 1 = " + str(date1))
 
     if next_month == 1:
@@ -37,10 +37,13 @@ def days_in_month(year, month):
     print("Date 2 = " + str(date2))
 
     difference = date2 - date1
+    rt_diff = difference.days
+    print("Number of days is: " + str(rt_diff))
+    return rt_diff
 
-    print("Number of days is: " + str(difference.days))
 
 days_in_month(2017, 2)
+
 
 def is_valid_date(year,month,day):
     """
@@ -52,9 +55,23 @@ def is_valid_date(year,month,day):
     Returns:
       True if year-month-day is a valid date
       False otherwise
-
-    :param year:
-    :param month:
-    :param day:
-    :return:
     """
+    max_days = days_in_month(year, month)
+    #print("Max_Days = " + str(max_days))
+    #date = datetime.date(year, month, day)
+
+    if ((datetime.MINYEAR <= year <= datetime.MAXYEAR) and (1 <= month <= 12) and (1 <= day <= max_days)):
+        #print("The date: " + str(date) + " is valid.")
+        date_valid = True
+        print(date_valid)
+        return date_valid
+    else:
+        #print("The year: " + str(date) + " is not valid.")
+        date_valid = False
+        print(date_valid)
+        return date_valid
+
+
+is_valid_date(2017, 12, 31)
+
+
