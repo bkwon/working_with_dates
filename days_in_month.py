@@ -28,21 +28,20 @@ def days_in_month(year, month):
         year = year + 1
 
     date1 = datetime.date(year, month, 1)
-    print("Next month = " + str(next_month))
-    print("Date 1 = " + str(date1))
+    #print("Next month = " + str(next_month))
+    #print("Date 1 = " + str(date1))
 
     if next_month == 1:
         year = year + 1
     date2 = datetime.date(year, next_month, 1)
-    print("Date 2 = " + str(date2))
+    #print("Date 2 = " + str(date2))
 
     difference = date2 - date1
+    #print("Value of 'difference' variable is: " + str(difference))
     rt_diff = difference.days
-    print("Number of days is: " + str(rt_diff))
+    print("Number of days in the input month is: " + str(rt_diff))
     return rt_diff
 
-
-days_in_month(2017, 2)
 
 
 def is_valid_date(year,month,day):
@@ -72,6 +71,47 @@ def is_valid_date(year,month,day):
         return date_valid
 
 
+def days_between(year1, month1, day1, year2, month2, day2):
+    """
+    Inputs:
+      year1   - an integer representing the year of the first date
+      month1  - an integer representing the month of the first date
+      day1    - an integer representing the day of the first date
+      year2   - an integer representing the year of the second date
+      month2  - an integer representing the month of the second date
+      day2    - an integer representing the day of the second date
+
+    Returns:
+      The number of days from the first date to the second date.
+      Returns 0 if either date is invalid or the second date is before
+      the first date.
+    """
+    date1 = datetime.date(year1, month1, day1)
+    date2 = datetime.date(year2, month2, day2)
+    if (is_valid_date(year1, month1, day1) and is_valid_date(year2, month2, day2) and date1 <= date2 ) == True:
+        difference = date2 - date1
+        rt_diff = difference.days
+        print("Days between the first and second dates = " + str(rt_diff))
+        return rt_diff
+    else:
+        print("First condition failed! Returning 0.")
+        return 0
+
+
+def age_in_days(year, month, day):
+    """
+    Inputs:
+      year   - an integer representing the birthday year
+      month  - an integer representing the birthday month
+      day    - an integer representing the birthday day
+
+    Returns:
+      The age of a person with the input birthday as of today.
+      Returns 0 if the input date is invalid or if the input date
+      is in the future.
+    """
+
+
+days_between(2017, 12, 31, 2018, 1, 1)
 is_valid_date(2017, 12, 31)
-
-
+days_in_month(2017, 2)
