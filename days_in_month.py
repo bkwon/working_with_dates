@@ -94,7 +94,7 @@ def days_between(year1, month1, day1, year2, month2, day2):
         print("Days between the first and second dates = " + str(rt_diff))
         return rt_diff
     else:
-        print("First condition failed! Returning 0.")
+        #print("First condition failed! Returning 0.")
         return 0
 
 
@@ -111,7 +111,20 @@ def age_in_days(year, month, day):
       is in the future.
     """
 
+    birthday = datetime.date(year, month, day)
+    current_day = datetime.datetime.now().date()
+    if (is_valid_date(year, month, day) and (birthday < current_day)):
+        difference = current_day - birthday
+        rt_diff = difference.days
+        print("My age in days is: " + str(rt_diff) + " days")
+        return rt_diff
 
-days_between(2017, 12, 31, 2018, 1, 1)
+    else:
+        #print("Return 0 because my input date is invalid or the input date is in the future!")
+        return 0
+
+
+age_in_days(1977, 12, 28)
+days_between(2017, 12, 31, 2018, 1, 2)
 is_valid_date(2017, 12, 31)
 days_in_month(2017, 2)
