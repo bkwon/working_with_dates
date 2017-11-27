@@ -1,5 +1,5 @@
 """
-This program is part of my coursera project that will be graded.
+Experimenting with datetime module in python
 """
 import datetime
 
