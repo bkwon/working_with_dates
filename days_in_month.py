@@ -44,7 +44,7 @@ def days_in_month(year, month):
 
 
 
-def is_valid_date(year,month,day):
+def is_valid_date(year, month, day):
     """
     Inputs:
       year  - an integer repersenting the year
@@ -59,7 +59,8 @@ def is_valid_date(year,month,day):
     #print("Max_Days = " + str(max_days))
     #date = datetime.date(year, month, day)
 
-    if ((datetime.MINYEAR <= year <= datetime.MAXYEAR) and (1 <= month <= 12) and (1 <= day <= max_days)):
+    if ((datetime.MINYEAR <= year <= datetime.MAXYEAR) and (1 <= month <= 12) and
+        (1 <= day <= max_days)):
         #print("The date: " + str(date) + " is valid.")
         date_valid = True
         print(date_valid)
@@ -88,7 +89,8 @@ def days_between(year1, month1, day1, year2, month2, day2):
     """
     date1 = datetime.date(year1, month1, day1)
     date2 = datetime.date(year2, month2, day2)
-    if (is_valid_date(year1, month1, day1) and is_valid_date(year2, month2, day2) and date1 <= date2 ) == True:
+    if ((is_valid_date(year1, month1, day1) and is_valid_date(year2, month2, day2) and
+        date1 <= date2)):
         difference = date2 - date1
         rt_diff = difference.days
         print("Days between the first and second dates = " + str(rt_diff))
@@ -113,7 +115,7 @@ def age_in_days(year, month, day):
 
     birthday = datetime.date(year, month, day)
     current_day = datetime.datetime.now().date()
-    if (is_valid_date(year, month, day) and (birthday < current_day)):
+    if is_valid_date(year, month, day) and (birthday < current_day):
         difference = current_day - birthday
         rt_diff = difference.days
         print("My age in days is: " + str(rt_diff) + " days")
